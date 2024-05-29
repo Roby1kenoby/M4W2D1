@@ -8,77 +8,68 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header class="d-flex justify-content-center">
-        <nav class="navbar navbar-dark bg-dark fixed-top">
-            <div class="container-fluid">
-                <div class="d-flex justify-content-between w-100">
-                    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="container-fluid">
-                        <form class="d-flex" role="search">
-                            <input class="form-control me-2 w-100" type="search" placeholder="Search" aria-label="Search">
-                            <button class="btn btn-outline-success" type="submit">Search</button>
-                        </form>
+    <header>
+      <nav class="navbar navbar-dark bg-dark fixed-top">
+        <div class="container-fluid">
+            <div class="d-flex justify-content-between w-100">
+                <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="container-fluid">
+                    <div class="d-flex">
+                        <input class="form-control me-2 w-100"  placeholder="Search" aria-label="Search" id="searchField">
+                        <button class="btn btn-outline-success" onclick="search()">Search</button>
                     </div>
-                    <a class="navbar-brand" href="#">Pexel Search</a>
                 </div>
-              <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
-                <div class="offcanvas-header">
-                  <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">Dark offcanvas</h5>
-                  <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-                </div>
-                <div class="offcanvas-body">
-                  <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-                    <li class="nav-item">
-                      <a class="nav-link active" aria-current="page" href="#">Home</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="#">Link</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                      <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Dropdown
-                      </a>
-                      <ul class="dropdown-menu dropdown-menu-dark">
-                        <li><a class="dropdown-item" href="#">Action</a></li>
-                        <li><a class="dropdown-item" href="#">Another action</a></li>
-                        <li>
-                          <hr class="dropdown-divider">
-                        </li>
-                        <li><a class="dropdown-item" href="#">Something else here</a></li>
-                      </ul>
-                    </li>
-                  </ul>
-                  <form class="d-flex mt-3" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-success" type="submit">Search</button>
-                  </form>
-                </div>
-              </div>
+                <a class="navbar-brand" href="#">Pexel Search</a>
             </div>
-          </nav>
-        <!-- <nav class="navbar navbar-expand-sm">
-            <div class="container-fluid">
-                <form class="d-flex" role="search">
-                    <input class="form-control me-2 w-100" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
-                </form>
+          <div class="offcanvas offcanvas-start text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
+            <div class="offcanvas-header">
+              <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">Search Options</h5>
+              <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div>
-        </nav> -->
+            <div class="offcanvas-body">
+              <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                <li class="nav-item d-flex align-items-center">
+                  <button class="btn btn-light m-1 w-50" onclick="getFavourites()">Show Bookmarked</button>
+                  <p id="nrBookmarks" class="m-0 ms-3">(0)</p>
+                </li>
+                <li class="nav-item">
+                  <button class="btn btn-danger m-1 w-50" onClick="clearPhotos()">Clear Selection</button>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </nav>
     </header>
     <main>
-        <sidebar>
-            <button class="btn btn-primary">Randomize</button>
-        </sidebar>
-        <content>
-            content
-        </content>
+      <content>
+        <div id="cardsContainer">
+          <div class="myCard d-none">
+            <img src="https://picsum.photos/id/1/500/300" class="album-img card-img-top" alt="placeholder">
+            <div class="myCardBody">
+              <div class="topInfo">
+                <button class="">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bookmarks" viewBox="0 0 16 16">
+                    <path d="M2 4a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v11.5a.5.5 0 0 1-.777.416L7 13.101l-4.223 2.815A.5.5 0 0 1 2 15.5zm2-1a1 1 0 0 0-1 1v10.566l3.723-2.482a.5.5 0 0 1 .554 0L11 14.566V4a1 1 0 0 0-1-1z"/>
+                    <path d="M4.268 1H12a1 1 0 0 1 1 1v11.768l.223.148A.5.5 0 0 0 14 13.5V2a2 2 0 0 0-2-2H6a2 2 0 0 0-1.732 1"/>
+                  </svg>
+                </button>
+              </div>
+              <div class="bottomInfo">
+                <h5 class="author card-title text-truncate">Author</h5>
+                <button class="btn btn-success">Scarica</button>
+              </div>
+            </div>
+          </div>
+        </div>
+    </content>
     </main>
     <footer>
-        footer
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    
     <script src="script.js"></script>
 </body>
 </html>
